@@ -1,0 +1,310 @@
+﻿
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <!-- Bootstrap -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- 复选框样式 -->
+    <link href="/css/plugins/iCheck/custom.css" rel="stylesheet">
+    <!-- 开关按钮样式 -->
+    <link href="/css/plugins/switchery/switchery.min.css" rel="stylesheet">
+    <!-- Sweet Alert -->
+    <link href="/css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+    <!-- select2 -->
+    <link href="/css/plugins/select2/select2.min.css" rel="stylesheet">
+    <!-- Toastr style -->
+    <link href="/css/plugins/toastr/toastr.min.css" rel="stylesheet">
+    <!-- Data picker -->
+    <link href="/css/plugins/datapicker/datepicker3.css" rel="stylesheet">
+    <!-- touchspin -->
+    <link href="/css/plugins/touchspin/touchspin.min.css" rel="stylesheet">
+    <!-- 标签样式 -->
+    <link href="/css/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css" rel="stylesheet">
+
+    <link href="/css/animate.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
+
+    <link href="/css/taiji.css" rel="stylesheet">
+    <!--自己的样式文件。防止404错误，可建立一个空白文件-->
+    <link href="/css/custom.css" rel="stylesheet">
+    <title>首页-奇点企业管理系统-通用版</title>
+</head>
+<body class="fixed-sidebar">
+    <div id="wrapper">
+        <!-- 左边导航菜单 -->
+        <nav class="navbar-default navbar-static-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav metismenu" id="side-menu">
+                    <li class="nav-header">
+                        <div class="dropdown profile-element">
+                            <span>
+                                <img alt="image" class="img-circle"
+                                     style="max-height: 50px;" src="/img/logo.png" />
+                            </span>
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                <span class="clear">
+                                    <span class="block m-t-xs">
+                                        <strong class="font-bold">管理员</strong>
+                                    </span>
+                                    <span class="text-muted text-xs block">
+                                        超级管理员<b class="caret"></b>
+                                    </span>
+                                </span>
+                            </a>
+                            <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                                <li><a onclick="loadUrl('page-center','/taiji.do?action=profile')" href="javascript:void(0);">个人中心</a></li>
+                                <li><a onclick="loadUrl('page-center','/taiji.do?action=modifypassword')" href="javascript:void(0);">修改密码</a></li>
+                                <li class="divider"></li>
+                                <li><a href="/taiji.do?action=logout">退出</a></li>
+                            </ul>
+                        </div>
+                        <div class="logo-element">MZ</div>
+                    </li>
+                    <li class="active">
+                        <a onclick="onClickMenuItem(this,'/home.do',1);" href="javascript:void(0);">
+                            <i class="fa fa-home"></i> <span class="nav-label">首页</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a onclick="onClickMenuItem(this,'/#',0)" href="javascript:void(0)"><i class="fa fa-desktop"></i><span class="nav-label">工作台</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li>
+                                <a onclick="onClickMenuItem(this,'/taijiWidget.do?widgetId=54',1)" href="javascript:void(0)"><i class="fa fa-arrow-right"></i><span class="nav-label">工作备忘录</span></a>
+                            </li>
+                            <li>
+                                <a onclick="onClickMenuItem(this,'/taijiModule.do?moduleId=35',1)" href="javascript:void(0)"><i class="fa fa-arrow-right"></i><span class="nav-label">我的工作日志</span></a>
+                            </li>
+                            <li>
+                                <a onclick="onClickMenuItem(this,'/taijiModule.do?moduleId=36',1)" href="javascript:void(0)"><i class="fa fa-arrow-right"></i><span class="nav-label">工作日志管理</span></a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a onclick="onClickMenuItem(this,'/#',0)" href="javascript:void(0)"><i class="fa fa-phone"></i><span class="nav-label">售前</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li>
+                                <a onclick="onClickMenuItem(this,'/taijiWidget.do?widgetId=39',1)" href="javascript:void(0)"><i class="fa fa-arrow-right"></i><span class="nav-label">我的订单咨询</span></a>
+                            </li>
+                            <li>
+                                <a onclick="onClickMenuItem(this,'/taijiWidget.do?widgetId=40',1)" href="javascript:void(0)"><i class="fa fa-arrow-right"></i><span class="nav-label">订单咨询管理</span></a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a onclick="onClickMenuItem(this,'/#',0)" href="javascript:void(0)"><i class="fa fa-meh-o"></i><span class="nav-label">跟单</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li>
+                                <a onclick="onClickMenuItem(this,'/taijiWidget.do?widgetId=63',1)" href="javascript:void(0)"><i class="fa fa-arrow-right"></i><span class="nav-label">我跟进的订单</span></a>
+                            </li>
+                            <li>
+                                <a onclick="onClickMenuItem(this,'/taijiWidget.do?widgetId=37',1)" href="javascript:void(0)"><i class="fa fa-arrow-right"></i><span class="nav-label">跟单员分配</span></a>
+                            </li>
+                            <li>
+                                <a onclick="onClickMenuItem(this,'/taijiWidget.do?widgetId=59',1)" href="javascript:void(0)"><i class="fa fa-arrow-right"></i><span class="nav-label">所有跟进记录</span></a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a onclick="onClickMenuItem(this,'/#',0)" href="javascript:void(0)"><i class="fa fa-handshake-o"></i><span class="nav-label">成交</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li>
+                                <a onclick="onClickMenuItem(this,'/taijiWidget.do?widgetId=35',1)" href="javascript:void(0)"><i class="fa fa-arrow-right"></i><span class="nav-label">我的订单</span></a>
+                            </li>
+                            <li>
+                                <a onclick="onClickMenuItem(this,'/taijiWidget.do?widgetId=50',1)" href="javascript:void(0)"><i class="fa fa-arrow-right"></i><span class="nav-label">订单管理</span></a>
+                            </li>
+                            <li>
+                                <a onclick="onClickMenuItem(this,'/taijiWidget.do?widgetId=65',1)" href="javascript:void(0)"><i class="fa fa-arrow-right"></i><span class="nav-label">我的客户</span></a>
+                            </li>
+                            <li>
+                                <a onclick="onClickMenuItem(this,'/taijiWidget.do?widgetId=36',1)" href="javascript:void(0)"><i class="fa fa-arrow-right"></i><span class="nav-label">客户管理</span></a>
+                            </li>
+                            <li>
+                                <a onclick="onClickMenuItem(this,'/taijiWidget.do?widgetId=53',1)" href="javascript:void(0)"><i class="fa fa-arrow-right"></i><span class="nav-label">客户联系人</span></a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a onclick="onClickMenuItem(this,'/#',0)" href="javascript:void(0)"><i class="fa fa-shopping-cart"></i><span class="nav-label">采购</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li>
+                                <a onclick="onClickMenuItem(this,'/taijiWidget.do?widgetId=41',1)" href="javascript:void(0)"><i class="fa fa-arrow-right"></i><span class="nav-label">供应商管理</span></a>
+                            </li>
+                            <li>
+                                <a onclick="onClickMenuItem(this,'/taijiWidget.do?widgetId=51',1)" href="javascript:void(0)"><i class="fa fa-arrow-right"></i><span class="nav-label">供应商联系人</span></a>
+                            </li>
+                            <li>
+                                <a onclick="onClickMenuItem(this,'/taijiWidget.do?widgetId=52',1)" href="javascript:void(0)"><i class="fa fa-arrow-right"></i><span class="nav-label">供应商分类</span></a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a onclick="onClickMenuItem(this,'/#',0)" href="javascript:void(0)"><i class="fa fa-rmb"></i><span class="nav-label">财务</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li>
+                                <a onclick="onClickMenuItem(this,'/taijiWidget.do?widgetId=66',1)" href="javascript:void(0)"><i class="fa fa-arrow-right"></i><span class="nav-label">订单收款支出开票</span></a>
+                            </li>
+                            <li>
+                                <a onclick="onClickMenuItem(this,'/taijiWidget.do?widgetId=42',1)" href="javascript:void(0)"><i class="fa fa-arrow-right"></i><span class="nav-label">订单收款流水</span></a>
+                            </li>
+                            <li>
+                                <a onclick="onClickMenuItem(this,'/taijiWidget.do?widgetId=57',1)" href="javascript:void(0)"><i class="fa fa-arrow-right"></i><span class="nav-label">订单支出流水</span></a>
+                            </li>
+                            <li>
+                                <a onclick="onClickMenuItem(this,'/taijiWidget.do?widgetId=61',1)" href="javascript:void(0)"><i class="fa fa-arrow-right"></i><span class="nav-label">开票记录查看</span></a>
+                            </li>
+                            <li>
+                                <a onclick="onClickMenuItem(this,'/taijiWidget.do?widgetId=49',1)" href="javascript:void(0)"><i class="fa fa-arrow-right"></i><span class="nav-label">销售合同管理</span></a>
+                            </li>
+                            <li>
+                                <a onclick="onClickMenuItem(this,'/taijiWidget.do?widgetId=62',1)" href="javascript:void(0)"><i class="fa fa-arrow-right"></i><span class="nav-label">采购合同管理</span></a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a onclick="onClickMenuItem(this,'/#',0)" href="javascript:void(0)"><i class="fa fa-line-chart"></i><span class="nav-label">统计</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li>
+                                <a onclick="onClickMenuItem(this,'/taijiChart.do?chartId=1',1)" href="javascript:void(0)"><i class="fa fa-arrow-right"></i><span class="nav-label">订单咨询日统计</span></a>
+                            </li>
+                            <li>
+                                <a onclick="onClickMenuItem(this,'/taijiChart.do?chartId=2',1)" href="javascript:void(0)"><i class="fa fa-arrow-right"></i><span class="nav-label">订单咨询月统计</span></a>
+                            </li>
+                            <li>
+                                <a onclick="onClickMenuItem(this,'/taijiChart.do?chartId=3',1)" href="javascript:void(0)"><i class="fa fa-arrow-right"></i><span class="nav-label">成交额月度统计</span></a>
+                            </li>
+                            <li>
+                                <a onclick="onClickMenuItem(this,'/taijiChart.do?chartId=4',1)" href="javascript:void(0)"><i class="fa fa-arrow-right"></i><span class="nav-label">收款额月度统计</span></a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a onclick="onClickMenuItem(this,'/#',0)" href="javascript:void(0)"><i class="fa fa-cog"></i><span class="nav-label">系统</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li>
+                                <a onclick="onClickMenuItem(this,'/taijiWidget.do?widgetId=3&action=edit&dataId=1',1)" href="javascript:void(0)"><i class="fa fa-arrow-right"></i><span class="nav-label">系统设置</span></a>
+                            </li>
+                            <li>
+                                <a onclick="onClickMenuItem(this,'/taijiWidget.do?widgetId=1',1)" href="javascript:void(0)"><i class="fa fa-arrow-right"></i><span class="nav-label">员工账号管理</span></a>
+                            </li>
+                            <li>
+                                <a onclick="onClickMenuItem(this,'/taijiWidget.do?widgetId=2',1)" href="javascript:void(0)"><i class="fa fa-arrow-right"></i><span class="nav-label">角色权限管理</span></a>
+                            </li>
+                            <li>
+                                <a onclick="onClickMenuItem(this,'/taijiWidget.do?widgetId=38',1)" href="javascript:void(0)"><i class="fa fa-arrow-right"></i><span class="nav-label">账号登录日志</span></a>
+                            </li>
+                            <li>
+                                <a onclick="onClickMenuItem(this,'/taiji.do?action=datasource',1)" href="javascript:void(0)"><i class="fa fa-arrow-right"></i><span class="nav-label">数据库连接池</span></a>
+                            </li>
+                            <li>
+                                <a onclick="onClickMenuItem(this,'/taiji.do?action=cache',1)" href="javascript:void(0)"><i class="fa fa-arrow-right"></i><span class="nav-label">更新系统缓存</span></a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="gray-bg">
+            <!-- 头部 -->
+            <div id="top" class="row border-bottom">
+                <nav class="navbar navbar-static-top" role="navigation"
+                     style="margin-bottom: 0">
+                    <div class="navbar-header">
+                        <a class="navbar-minimalize minimalize-styl-2 btn btn-primary "
+                           href="#"><i class="fa fa-bars"></i></a>
+                        <h2 class="navbar-h2">奇点企业管理系统-通用版</h2>
+                    </div>
+                    <ul class="nav navbar-top-links navbar-right">
+                        <li>
+                            <span class="m-r-sm text-muted welcome-message">欢迎您，管理员（admin）</span>
+                        </li>
+                        <li>
+                            <a href="/taiji.do?action=logout">
+                                <i class="fa fa-sign-out"></i> 退出登录
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+            <!-- 中间内容 -->
+            <div id="page-center" class="wrapper wrapper-content animated fadeInRight"></div>
+
+            <!-- 底部 -->
+            <div id="footer" class="footer">
+                <div class="float-right">
+                    版本：2.21，Build：2019-04-25，
+                    内核：1.32 [2019-09-05]，
+                    Support：奇点智能科技
+                </div>
+                <div>
+                    <strong>Copyright</strong> 苏州奇点智能科技有限公司
+                    &copy;2018-2019
+                </div>
+            </div>
+
+            <!-- modal弹框 -->
+            <div class="modal inmodal" id="modalDialog" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static"></div>
+
+        </div>
+    </div>
+
+    <!-- Mainly scripts -->
+    <script src="/js/jquery-3.1.1.min.js"></script>
+    <!--当前的ui只包含了Draggable功能，如需要其他的功能，请重新打包-->
+    <script src="/js/jquery-ui.min.js"></script>
+
+    <script src="/js/popper.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+    <!-- Custom and plugin javascript -->
+    <script src="/js/inspinia.js"></script>
+    <script src="/js/plugins/pace/pace.min.js"></script>
+
+    <!-- iCheck -->
+    <script src="/js/plugins/iCheck/icheck.min.js"></script>
+    <!-- Switchery -->
+    <script src="/js/plugins/switchery/switchery.min.js"></script>
+    <!-- Toastr script -->
+    <script src="/js/plugins/toastr/toastr.min.js"></script>
+    <!-- sweetalert -->
+    <script src="/js/plugins/sweetalert/sweetalert.min.js"></script>
+    <!-- Select2 -->
+    <script src="/js/plugins/select2/select2.full.min.js"></script>
+    <script src="/js/plugins/select2/i18n/zh-CN.js"></script>
+    <!-- Data picker -->
+    <script src="/js/plugins/datapicker/bootstrap-datepicker.js"></script>
+    <script src="/js/plugins/datapicker/locales/bootstrap-datepicker.zh-CN.min.js"></script>
+    <!-- TouchSpin -->
+    <script src="/js/plugins/touchspin/jquery.bootstrap-touchspin.min.js"></script>
+    <!-- Tags Input -->
+    <script src="/js/plugins/bootstrap-tagsinput/bootstrap-tagsinput.js"></script>
+    <!-- 百度echart -->
+    <script src="/js/plugins/echarts/echarts.min.js"></script>
+    <script src="/js/plugins/echarts/china.js"></script>
+    <!-- UEditor富文本编辑器 -->
+    <script src="/js/plugins/ueditor/ueditor.config.js"></script>
+    <script src="/js/plugins/ueditor/ueditor.all.min.js"></script>
+    <script src="/js/plugins/ueditor/ueditor.parse.min.js"></script>
+
+    <script src="/js/taiji.js"></script>
+    <!--自己的js文件。为防止404错误，可建立一个空白js文件-->
+    <script src="/js/custom.js"></script>
+    <script>
+    loadUrl("page-center", "/home.do");
+    </script>
+
+</body>
+</html>
