@@ -1,0 +1,77 @@
+﻿#backimg {
+    background-image: url(/img/back1.jpg);
+    background-size: cover;
+}
+
+#nav {
+    color: white;
+}
+
+#title {
+    height: 320px;
+}
+
+    #title > span {
+        margin-top: 110px;
+        font-size: 36px;
+        font-family: Times New Roman,Times,serif;
+        color: white;
+    }
+
+#task {
+    margin-top: 30px;
+}
+
+#task_title {
+}
+
+    #task_title > span {
+        line-height: 2.5;
+        font-size: 20px;
+        color: black;
+    }
+
+#task_list {
+}
+
+    #task_list > div > div > a > div {
+        width: 100%;
+        height: 150px;
+        line-height: 150px;
+        text-align: center;
+        background-image: url(/img/task1.jpg);
+        background-size: cover;
+        color:white;
+        font-size:18px;
+    }
+
+    #task_list > div > div > div {
+        padding: 4px;
+    }
+
+        #task_list > div > div > div > a > span {
+            line-height: 2;
+            font-size: 14px;
+            color: black;
+        }
+
+        #task_list > div > div > div > div {
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            -webkit-line-clamp: 1;
+            height: 20px;
+        }
+
+            #task_list > div > div > div > div > i {
+                opacity: 0.3;
+                filter: alpha(opacity=30);
+                font-size: 11px;
+            }
+
+            #task_list > div > div > div > div > span {
+                color: gray;
+                font-size: 11px;
+                font-family: Times New Roman,Times,serif;
+            }
