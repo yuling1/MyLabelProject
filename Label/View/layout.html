@@ -5,36 +5,35 @@
 	<meta charset="utf-8" />
     <link rel="stylesheet" href="layout.css">
     <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <script src="layout.js"></script>
 </head>
 <body>
-    <div id="leftSideBar">
+    <div id="toolBar">       
         <div id="logo">
             <img src="logo2.png" />
         </div>
-        <div  id="leftSideMenu">
-            <ul>
-                <li><a onclick="clickMyTask()" href="http://www.baidu.com">我的任务</a></li>
-            </ul>
-            <ul>
-                <li><a onclick="clickTaskHistory()" href="http://www.bing.com">历史任务</a></li>
-            </ul>
+        <div id="toolMenu">
+            <a href="http://www.baidu.com"><div id="notification" class="fa fa-bell-o"></div></a> 
+            <a href="http://www.baidu.com"><img id="userImg" src="userImg.png"></img></a> 
+            <a href="http://www.baidu.com"><div id="userInfo">user name</div></a> 
         </div>
-    </div>
+        <!-- <table id="toolMenu">
+            <tr>
+                <td><a href="http://www.baidu.com"><div id="notification" class="fa fa-bell-o"></div></a> </td>
+                <td><a href="http://www.baidu.com"><img id="userImg" src="userImg.png"></img></a> </td>
+                <td><a href="http://www.baidu.com"><div id="userInfo">user name</div></a> </td>
+            </tr>
+        </table> -->
+    </div>   
     <div id="pageWrapper">
-        <div id="toolBar">
-            <div id="toolMenu">
-                <a href="http://www.baidu.com"><div id="notification" class="fa fa-bell-o"></div></a> 
-                <a href="http://www.baidu.com"><img id="userImg" src="userImg.png"></img></a> 
-                <a href="http://www.baidu.com"><div id="userInfo">user name</div></a> 
+        <div id="leftSideBar">
+            <div  id="leftSideMenu">
+                <ul>
+                    <li><a onclick="clickMyTask()" href="http://www.baidu.com"><i class="fa fa-dashboard"></i>&nbsp;我的任务</a></li>
+                </ul>
+                <ul>
+                    <li><a onclick="clickTaskHistory()" href="http://www.bing.com"><i class="fa fa-edit"></i>&nbsp;历史任务</a></li>
+                </ul>
             </div>
-            <!-- <table id="toolMenu">
-                <tr>
-                    <td><a href="http://www.baidu.com"><div id="notification" class="fa fa-bell-o"></div></a> </td>
-                    <td><a href="http://www.baidu.com"><img id="userImg" src="userImg.png"></img></a> </td>
-                    <td><a href="http://www.baidu.com"><div id="userInfo">user name</div></a> </td>
-                </tr>
-            </table> -->
         </div>
         <div id="content">
                 <div id="content-title">
