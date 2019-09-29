@@ -1,0 +1,32 @@
+﻿#checkRecord {
+    background-color: white;
+    padding: 20px;
+}
+
+#checkRecord-table {
+    width: 100%;
+}
+
+    #checkRecord-table div {
+        display: inline-block;
+    }
+
+    #checkRecord-table p {
+        text-align: left;
+        width: 100%;
+        display: inline-block;
+    }
+
+        #checkRecord-table p span {
+        }
+
+        #checkRecord-table p input {
+            float: right;
+            min-width: 80%;
+        }
+
+#checkRecord-title {
+    display: block;
+    height: 40px;
+    color: #7c7c7c;
+}

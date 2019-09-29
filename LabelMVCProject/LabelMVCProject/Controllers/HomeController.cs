@@ -26,5 +26,15 @@ namespace LabelMVCProject.Controllers
 
             return View();
         }
+
+        public ActionResult TaskDetail()
+        {
+            return View();
+        }
+
+        public ActionResult TaskHistoryDetail()
+        {
+            return View();
+        }
     }
 }

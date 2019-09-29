@@ -6,17 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    <link rel="stylesheet" href="layout.css">
     <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 <body>
     <div id="toolBar">
         <div id="logo">
-            <img src="logo2.png" />
+            <img src="~/Img/logo.png" />
         </div>
         <div id="toolMenu">
             <a href="http://www.baidu.com"><div id="notification" class="fa fa-bell-o"></div></a>
-            <a href="http://www.baidu.com"><img id="userImg" src="userImg.png" /></a>
+            <a href="http://www.baidu.com"><img id="userImg" src="~/Img/userImg.png" /></a>
             <a href="http://www.baidu.com"><div id="userInfo">user name</div></a>
         </div>
         <!-- <table id="toolMenu">
@@ -29,7 +28,7 @@
     </div>
     <div id="pageWrapper">
         @RenderBody()
-        @*<div id="leftSideBar">
+        <!-- <div id="leftSideBar">
             <div id="leftSideMenu">
                 <ul>
                     <li><a onclick="clickMyTask()" href="http://www.baidu.com"><i class="fa fa-dashboard"></i>&nbsp;我的任务</a></li>
@@ -40,93 +39,7 @@
             </div>
         </div>
         <div id="content">
-            <!--<div id="content-title">
-                <span class="content-title-font">我的任务</span>
-                <span class="content-title-font">/</span>
-                <span class="content-title-current-font">查看明细</span>
-            </div>
-            <div id="content-all">
-                <div id="checkRecord">
-                    <span id="checkRecord-title">审批记录</span>
-                    <table id="checkRecord-table">
-                        <tr>
-                            <th>提交时间</th>
-                            <th>审批时间</th>
-                            <th>审批状态</th>
-                            <th>审批人</th>
-                        </tr>
-                        <tr>
-                            <td>2019/08/04</td>
-                            <td>2019/08/06</td>
-                            <td>未通过</td>
-                            <td>OA人员</td>
-                        </tr>
-                        <tr>
-                            <td>2019/08/04</td>
-                            <td>2019/08/06</td>
-                            <td>未通过</td>
-                            <td>OA人员</td>
-                        </tr>
-                        <tr>
-                            <td>2019/08/04</td>
-                            <td>2019/08/06</td>
-                            <td>未通过</td>
-                            <td>OA人员</td>
-                        </tr>
-                    </table>
-                </div>
-            </div>-->
-            <div id="content-head">
-                <div id="content-title">
-                    <span class="content-title-font">我的任务</span>
-                    <span class="content-title-font">/</span>
-                    <span class="content-title-font">任务标注</span>
-                    <span class="content-title-font">/</span>
-                    <span class="content-title-current-font">任务详情</span>
-                </div>
-                <div id="content-toolbar">
-                    <span>小冰诗歌标注</span>
-                    <div id="content-toolbar-buttons">
-                        <input id="submitTask" class="button-submit" value="提交任务" type="button" />
-                        <input id="exit" class="button-cancel" value="退出" type="button" />
-                    </div>
-                </div>
-            </div>
-            <div id="content-body">
-                <div id="checkRecord">
-                    <!--<span id="checkRecord-title">审批记录</span>-->
-                    <table id="checkRecord-table">
-                        <tr>
-                            <th>数据序号</th>
-                            <th>数据编号</th>
-                            <th>数据名称</th>
-                            <th>数据内容</th>
-                            <th>规则1</th>
-                            <th>规则2</th>
-                            <th>规则3</th>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>001</td>
-                            <td>小冰诗歌</td>
-                            <td>古佛洞的尽头是低矮的棚屋</td>
-                            <td>
-                                <input type="checkbox" />True
-                                <input type="checkbox" />False
-                            </td>
-                            <td>
-                                <p>Edit: <input type="text" /></p>
-                                <p>Delete: <input type="text" /></p>
-                            </td>
-                            <td>
-                                <input type="checkbox" />True
-                                <input type="checkbox" />False
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-        </div>*@
+        </div> -->
     </div>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
@@ -135,34 +48,34 @@
 </html>
 
 @*<body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("About", "About", "Home")</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    </ul>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
+        <div class="container body-content">
+            @RenderBody()
+            <hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            </footer>
+        </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
-</body>*@
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
+    </body>*@
