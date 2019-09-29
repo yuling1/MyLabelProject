@@ -7,6 +7,7 @@ body {
     padding:0;
     height:100%;
     background-color:#f0f2f5;
+    font-size:14px;
 }
 
 table,th, td{
@@ -90,6 +91,7 @@ td{
     float:left;
     height:100%;
     width:220px;
+    font-size:16px;
 }
 
 #leftSideMenu{
@@ -135,13 +137,48 @@ td{
     box-sizing: border-box;
 }
 
+#content-head{
+    background-color:white;
+    margin-top:10px;
+    margin-bottom:10px;
+    padding:20px;
+}
+
 #content-title{
     display: block;
     height: 40px;
     width: 100%;
 }
 
-#content-all{
+#content-toolbar span{
+    font-size:20px;
+    font-weight:bold;
+}
+
+#content-toolbar-buttons{
+    float:right;
+}
+
+.button-submit{
+    background-color:#1890ff;
+    color:white;
+    height:35px;
+    width:100px;
+    border:none;
+    border-radius:19px;
+    box-sizing:border-box;
+}
+
+.button-cancel{
+    background-color:white;
+    height:35px;
+    width:100px;
+    border:1px solid #999999;
+    border-radius:19px;
+    box-sizing:border-box;
+}
+
+#content-body{
     width: 100%;
 }
 
@@ -160,6 +197,14 @@ td{
 
 #checkRecord-table{
     width: 100%;
+}
+
+#checkRecord-table p{
+    text-align:left;
+}
+
+#checkRecord-table p input{
+    float:right;
 }
 
 #checkRecord-title{
