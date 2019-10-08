@@ -73,3 +73,23 @@
     </div>
 </div>
 
+<script type="text/javascript">
+    $(function () {
+        $.ajax({
+            type: 'GET',
+            dataType: 'json',
+            async: false,
+            url: 'GetTasks',
+            success: function (data) {
+                alert('Task Name:' + data[0]['Name']);
+                alert('Task Content:' + data[0]['Content']);
+                alert('Task1 -> Rule1 Name:' + data[0]['Rules'][0]['RuleName']);
+                alert('Task1 -> Rule1 -> Label1 Type:' + data[0]['Rules'][0]['Labels'][0]['Type']);
+                alert('Task1 -> Rule1 -> Label1 InnerHtml:' + data[0]['Rules'][0]['Labels'][0]['InnerHtml']);
+            },
+            error: function (data) {
+                alert('error');
+            }
+        })
+    });
+</script>
