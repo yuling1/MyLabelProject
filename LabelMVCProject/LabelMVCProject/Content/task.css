@@ -7,9 +7,9 @@
     width: 100%;
 }
 
-    #checkRecord-table div {
+    /*#checkRecord-table div {
         display: inline-block;
-    }
+    }*/
 
     #checkRecord-table p {
         text-align: left;
@@ -24,6 +24,10 @@
             float: right;
             min-width: 80%;
         }
+
+    #checkRecord-table td > div {
+        display: flex;
+    }
 
 #checkRecord-title {
     display: block;

@@ -1,8 +1,56 @@
-﻿
+﻿@using LabelMVCProject.Models;
+@model List<Task>
+
 @{
     ViewBag.Title = "TaskDetail";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+
+@*<script type="text/javascript">
+        $(function () {
+            var tasks = new Array();
+            $.ajax({
+                type: 'GET',
+                dataType: 'json',
+                async: false,
+                url: 'GetTasks',
+                success: function (data) {
+                    for (var i = 0; i < data.length; i++) {
+                        var task = {};
+                        var rules = new Array();
+                        var labels = new Array();
+                        //alert('Task Name:' + data[i]['Name']);
+                        task.name = data[i]['Name'];
+                        //alert('Task Content:' + data[i]['Content']);
+                        task.content = data[i]['Content'];
+                        for (var j = 0; j < data[i]['Rules'].length; j++) {
+                            var rule = {};
+                            //alert('Task1 -> Rule1 Name:' + data[i]['Rules'][j]['RuleName']);
+                            rule.name = data[i]['Rules'][j]['RuleName'];
+                            for (var k = 0; k < data[i]['Rules'][j]['Labels'].length; k++) {
+                                var label = {};
+                                //alert('Task1 -> Rule1 -> Label1 Type:' + data[i]['Rules'][j]['Labels'][k]['Type']);
+                                label.type = data[i]['Rules'][j]['Labels'][k]['Type'];
+                                //alert('Task1 -> Rule1 -> Label1 InnerHtml:' + data[i]['Rules'][j]['Labels'][k]['InnerHtml']);
+                                label.innerHtml = data[i]['Rules'][j]['Labels'][k]['InnerHtml'];
+                                labels.push(label);
+                            }
+                            rule.labels = labels;
+                            rules.push(rule);
+                        }
+                        task.rules = rules;
+                        tasks.push(task);
+                    }
+                },
+                error: function (data) {
+                    alert('error');
+                }
+            });
+            alert(tasks[0].name)
+            return tasks;
+        });
+    </script>*@
 
 <div id="leftSideBar">
     <div id="leftSideMenu">
@@ -40,9 +88,10 @@
                     <th>数据编号</th>
                     <th>数据名称</th>
                     <th>数据内容</th>
-                    <th>规则1</th>
-                    <th>规则2</th>
-                    <th>规则3</th>
+                    @foreach (var rule in Model.First().Rules)
+                    {
+                        <th>@rule.RuleName</th>
+                    }
                 </tr>
                 <tr>
                     <td>1</td>
@@ -50,8 +99,8 @@
                     <td>小冰诗歌</td>
                     <td>古佛洞的尽头是低矮的棚屋</td>
                     <td>
-                        <input type="checkbox" />True
-                        <input type="checkbox" />False
+                        <input type="checkbox" /><span>True</span>
+                        <input type="checkbox" /><span>False</span>
                     </td>
                     <td>
                         <p>
@@ -64,32 +113,63 @@
                         </p>
                     </td>
                     <td>
-                        <div><input type="checkbox" />True</div>
-                        <div><input type="checkbox" />False</div>
+                        <input type="checkbox" /><span>True</span>
+                        <input type="checkbox" /><span>False</span>
                     </td>
                 </tr>
+                @{
+                    int i = 2;
+                    foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@i</td>
+                            <td>@item.ID</td>
+                            <td>@item.Name</td>
+                            <td>@item.Content</td>
+                            @foreach (var rule in item.Rules)
+                            {
+                                <td>
+                                    <div>
+                                        @foreach (var label in rule.Labels)
+                                        {
+                                            <div>
+                                                @if (label.Type == "label")
+                                                {
+                                                    <label>@label.InnerHtml</label>
+                                                }
+                                                else
+                                                {
+                                                    <input type=@label.Type />
+                                                }
+                                            </div>
+                                        }
+                                    </div>
+                                </td>
+                            }
+
+                            @*<td>
+                                    <input type="checkbox" /><span>True</span>
+                                    <input type="checkbox" /><span>False</span>
+                                </td>
+                                <td>
+                                    <p>
+                                        <span>Edit: </span>
+                                        <input type="text" />
+                                    </p>
+                                    <p>
+                                        <span>Delete: </span>
+                                        <input type="text" />
+                                    </p>
+                                </td>
+                                <td>
+                                    <input type="checkbox" /><span>True</span>
+                                    <input type="checkbox" /><span>False</span>
+                                </td>*@
+                        </tr>
+                        i++;
+                    }
+                }
             </table>
         </div>
     </div>
 </div>
-
-<script type="text/javascript">
-    $(function () {
-        $.ajax({
-            type: 'GET',
-            dataType: 'json',
-            async: false,
-            url: 'GetTasks',
-            success: function (data) {
-                alert('Task Name:' + data[0]['Name']);
-                alert('Task Content:' + data[0]['Content']);
-                alert('Task1 -> Rule1 Name:' + data[0]['Rules'][0]['RuleName']);
-                alert('Task1 -> Rule1 -> Label1 Type:' + data[0]['Rules'][0]['Labels'][0]['Type']);
-                alert('Task1 -> Rule1 -> Label1 InnerHtml:' + data[0]['Rules'][0]['Labels'][0]['InnerHtml']);
-            },
-            error: function (data) {
-                alert('error');
-            }
-        })
-    });
-</script>

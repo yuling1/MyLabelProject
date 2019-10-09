@@ -48,7 +48,6 @@ E:\Yuling\learn\HTML\LabelMVCProject\LabelMVCProject\bin\System.Web.WebPages.Dep
 E:\Yuling\learn\HTML\LabelMVCProject\LabelMVCProject\bin\System.Web.WebPages.Razor.xml
 E:\Yuling\learn\HTML\LabelMVCProject\LabelMVCProject\bin\Antlr3.Runtime.pdb
 E:\Yuling\learn\HTML\LabelMVCProject\LabelMVCProject\bin\Newtonsoft.Json.xml
-E:\Yuling\learn\HTML\LabelMVCProject\LabelMVCProject\obj\Debug\LabelMVCProject.csprojResolveAssemblyReference.cache
 E:\Yuling\learn\HTML\LabelMVCProject\LabelMVCProject\obj\Debug\LabelMVCProject.dll
 E:\Yuling\learn\HTML\LabelMVCProject\LabelMVCProject\obj\Debug\LabelMVCProject.pdb
 E:\myHtmlCode\LabelMVCProject\LabelMVCProject\bin\ApplicationInsights.config

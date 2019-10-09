@@ -28,39 +28,78 @@ namespace LabelMVCProject.Controllers
             return View();
         }
 
+        //public JsonResult GetTasks()
+        //{
+        //    var label1 = new Label() { Type = "checkbox", InnerHtml = "True", ClassID = "classID1" };
+        //    var label2 = new Label() { Type = "checkbox", InnerHtml = "False", ClassID = "classID2" };
+        //    var label3 = new Label() { Type = "text", InnerHtml = "Edit: ", ClassID = "classID3" };
+        //    var label4 = new Label() { Type = "text", InnerHtml = "Delete: ", ClassID = "classID4" };
+        //    var label5 = new Label() { Type = "checkbox", InnerHtml = "True", ClassID = "classID5" };
+        //    var label6 = new Label() { Type = "checkbox", InnerHtml = "False", ClassID = "classID6" };
+        //    var labels1 = new List<Label>();
+        //    labels1.Add(label1);
+        //    labels1.Add(label2);
+        //    var labels2 = new List<Label>();
+        //    labels2.Add(label3);
+        //    labels2.Add(label4);
+        //    var labels3 = new List<Label>();
+        //    labels3.Add(label5);
+        //    labels3.Add(label6);
+        //    var rule1 = new Rule() { RuleName = "Rule1", Patten = "", Labels = labels1 };
+        //    var rule2 = new Rule() { RuleName = "Rule2", Patten = "", Labels = labels2 };
+        //    var rule3 = new Rule() { RuleName = "Rule3", Patten = "", Labels = labels3 };
+        //    var rules = new List<Rule>();
+        //    rules.Add(rule1);
+        //    rules.Add(rule2);
+        //    rules.Add(rule3);
+        //    var task = new Task() { Num = 1, ID = 001, Name = "小冰诗歌", Content = "古佛洞的尽头是低矮的棚屋", Rules = rules };
+        //    var tasks = new List<Task>();
+        //    tasks.Add(task);
+        //    return Json(tasks, JsonRequestBehavior.AllowGet);
+        //}
+
         public ActionResult TaskDetail()
         {
-            return View();
-        }
-
-        public ActionResult GetTasks()
-        {
-            var label1 = new Label() { Type= "checkbox", InnerHtml= "True", ClassID= "classID1" };
+            var label1 = new Label() { Type = "checkbox", InnerHtml = "True", ClassID = "classID1" };
             var label2 = new Label() { Type = "checkbox", InnerHtml = "False", ClassID = "classID2" };
             var label3 = new Label() { Type = "text", InnerHtml = "Edit: ", ClassID = "classID3" };
             var label4 = new Label() { Type = "text", InnerHtml = "Delete: ", ClassID = "classID4" };
             var label5 = new Label() { Type = "checkbox", InnerHtml = "True", ClassID = "classID5" };
             var label6 = new Label() { Type = "checkbox", InnerHtml = "False", ClassID = "classID6" };
+            var label7 = new Label() { Type = "label", InnerHtml = "True", ClassID = "classID7" };
+            var label8 = new Label() { Type = "label", InnerHtml = "False", ClassID = "classID8" };
+            var label9 = new Label() { Type = "label", InnerHtml = "Edit: ", ClassID = "classID9" };
+            var label10 = new Label() { Type = "label", InnerHtml = "Delete: ", ClassID = "classID10" };
             var labels1 = new List<Label>();
             labels1.Add(label1);
+            labels1.Add(label7);
             labels1.Add(label2);
+            labels1.Add(label8);
             var labels2 = new List<Label>();
+            labels2.Add(label9);
             labels2.Add(label3);
+            labels2.Add(label10);
             labels2.Add(label4);
             var labels3 = new List<Label>();
             labels3.Add(label5);
+            labels3.Add(label7);
             labels3.Add(label6);
+            labels3.Add(label8);
             var rule1 = new Rule() { RuleName = "Rule1", Patten = "", Labels = labels1 };
-            var rule2 = new Rule() { RuleName = "Rule1", Patten = "", Labels = labels2 };
-            var rule3 = new Rule() { RuleName = "Rule1", Patten = "", Labels = labels3 };
+            var rule2 = new Rule() { RuleName = "Rule2", Patten = "", Labels = labels2 };
+            var rule3 = new Rule() { RuleName = "Rule3", Patten = "", Labels = labels3 };
             var rules = new List<Rule>();
             rules.Add(rule1);
             rules.Add(rule2);
             rules.Add(rule3);
             var task = new Task() { Num = 1, ID = 001, Name = "小冰诗歌", Content = "古佛洞的尽头是低矮的棚屋", Rules = rules };
             var tasks = new List<Task>();
-            tasks.Add(task);
-            return Json(tasks, JsonRequestBehavior.AllowGet);
+            for (int i = 0; i < 10; i++)
+            {
+                tasks.Add(task);
+            }
+            //ViewData["tasks"] = tasks;
+            return View(tasks);
         }
 
         public ActionResult TaskHistoryDetail()
