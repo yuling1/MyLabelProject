@@ -39,151 +39,175 @@
         <div id="checkRecord">
             <!--<span id="checkRecord-title">审批记录</span>-->
             <table id="checkRecord-table">
-                <tr>
-                    <th>数据序号</th>
-                    <th>数据名称</th>
-                    <th>数据内容</th>
-                    @foreach (var rule in Model.First().Rules)
-                    {
-                        <th>@rule.RuleName</th>
-                    }
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>小冰诗歌</td>
-                    <td>古佛洞的尽头是低矮的棚屋</td>
-                    <td>
-                        <div>
-                            <p><span>Edit:&nbsp;</span><input class="floatRight" type="text" /></p>
-                            <p><span>Delete:&nbsp;</span><input class="floatRight" type="text" /></p>
-                        </div>
-                    </td>
-                    <td>
-                        <div>
-                            <p><input type="radio" /><label>True</label></p>
-                            <p><input type="radio" /><label>False</label></p>
-                        </div>
-                    </td>
-                    <td>
-                        <div>
-                            <p><input type="checkbox" /><label>暴力</label>&nbsp;</p>
-                            <p><input type="checkbox" /><label>色情</label>&nbsp;</p>
-                            <p><input type="checkbox" /><label>犯罪</label>&nbsp;</p>
-                            <p><input type="checkbox" /><label>赌博</label>&nbsp;</p>
-                        </div>
-                    </td>
-                    <td>
-                        <div>
-                            <select>
-                                <option>暴力</option>
-                                <option>色情</option>
-                                <option>犯罪</option>
-                                <option>赌博</option>
-                            </select>
-                        </div>
-                    </td>
-                </tr>
-                @{
-                    int i = 2;
-                    foreach (var item in Model)
-                    {
-                        <tr>
-                            <td>@i</td>
-                            <td>@item.Name</td>
-                            <td>@item.Content</td>
-                            @foreach (var rule in item.Rules)
-                            {
-                                <td>
-                                    <div>
-                                        @if (rule.Type == "select")
-                                        {
-                                            <select>
-                                                @foreach (var label in rule.Labels)
+                @*<tr>
+                        <th>数据序号</th>
+                        <th>数据名称</th>
+                        <th>数据内容</th>
+                        @foreach (var rule in Model.First().Rules)
+                        {
+                            <th>@rule.RuleName</th>
+                        }
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>小冰诗歌</td>
+                        <td>古佛洞的尽头是低矮的棚屋</td>
+                        <td>
+                            <div>
+                                <p><span>Edit:&nbsp;</span><input class="floatRight" type="text" /></p>
+                                <p><span>Delete:&nbsp;</span><input class="floatRight" type="text" /></p>
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                <p><input type="radio" /><label>True</label></p>
+                                <p><input type="radio" /><label>False</label></p>
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                <p><input type="checkbox" /><label>暴力</label>&nbsp;</p>
+                                <p><input type="checkbox" /><label>色情</label>&nbsp;</p>
+                                <p><input type="checkbox" /><label>犯罪</label>&nbsp;</p>
+                                <p><input type="checkbox" /><label>赌博</label>&nbsp;</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                <select>
+                                    <option>暴力</option>
+                                    <option>色情</option>
+                                    <option>犯罪</option>
+                                    <option>赌博</option>
+                                </select>
+                            </div>
+                        </td>
+                    </tr>
+                    @{
+                        int i = 2;
+                        foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@i</td>
+                                <td>@item.Name</td>
+                                <td>@item.Content</td>
+                                @foreach (var rule in item.Rules)
+                                {
+                                    <td>
+                                        <div>
+                                            @if (rule.Type == "select")
+                                            {
+                                                <select>
+                                                    @foreach (var label in rule.Labels)
+                                                    {
+                                                        <option>@label.InnerHtml</option>
+                                                    }
+                                                </select>
+                                            }
+                                            else if (rule.Type == "text")
+                                            {
+                                                foreach (var label in rule.Labels)
                                                 {
-                                                    <option>@label.InnerHtml</option>
+                                                    <p><span>@label.InnerHtml:&nbsp;</span><input class='floatRight' type='text' /></p>
                                                 }
-                                            </select>
-                                        }
-                                        else if (rule.Type == "text")
-                                        {
-                                            foreach (var label in rule.Labels)
-                                            {
-                                                <p><span>@label.InnerHtml:&nbsp;</span><input class='floatRight' type='text' /></p>
                                             }
-                                        }
-                                        else if (rule.Type == "checkbox")
-                                        {
-                                            foreach (var label in rule.Labels)
+                                            else if (rule.Type == "checkbox")
                                             {
-                                                <p><input type='checkbox' /><label>@label.InnerHtml</label>&nbsp;</p>
+                                                foreach (var label in rule.Labels)
+                                                {
+                                                    <p><input type='checkbox' /><label>@label.InnerHtml</label>&nbsp;</p>
+                                                }
                                             }
-                                        }
-                                        else if (rule.Type == "radio")
-                                        {
-                                            foreach (var label in rule.Labels)
+                                            else if (rule.Type == "radio")
                                             {
-                                                <p><input type='radio' /><label>@label.InnerHtml</label></p>
+                                                foreach (var label in rule.Labels)
+                                                {
+                                                    <p><input type='radio' /><label>@label.InnerHtml</label></p>
+                                                }
                                             }
-                                        }
-                                    </div>
-                                </td>
-                            }
-                        </tr>
-                        i++;
-                    }
-                }
+                                        </div>
+                                    </td>
+                                }
+                            </tr>
+                            i++;
+                        }
+                    }*@
             </table>
         </div>
     </div>
 </div>
 
 <script type="text/javascript">
-    $(document).ready(
-        function () {
-            alert($("#checkRecord-table").innerHtml);
-            //var tasks = new Array();
-            //$.ajax({
-            //    type: 'GET',
-            //    dataType: 'json',
-            //    async: false,
-            //    url: 'GetTasks',
-            //    success: function (data) {
-            //        for (var i = 0; i < data.length; i++) {
-            //            data[i]['Name'];
+    //alert(document.getElementById("checkRecord-table").innerHTML);
 
-            //            var task = {};
-            //            var rules = new Array();
-            //            var labels = new Array();
-            //            //alert('Task Name:' + data[i]['Name']);
-            //            task.name = data[i]['Name'];
-            //            //alert('Task Content:' + data[i]['Content']);
-            //            task.content = data[i]['Content'];
-            //            for (var j = 0; j < data[i]['Rules'].length; j++) {
-            //                var rule = {};
-            //                //alert('Task1 -> Rule1 Name:' + data[i]['Rules'][j]['RuleName']);
-            //                rule.name = data[i]['Rules'][j]['RuleName'];
-            //                for (var k = 0; k < data[i]['Rules'][j]['Labels'].length; k++) {
-            //                    var label = {};
-            //                    //alert('Task1 -> Rule1 -> Label1 Type:' + data[i]['Rules'][j]['Labels'][k]['Type']);
-            //                    label.type = data[i]['Rules'][j]['Labels'][k]['Type'];
-            //                    //alert('Task1 -> Rule1 -> Label1 InnerHtml:' + data[i]['Rules'][j]['Labels'][k]['InnerHtml']);
-            //                    label.innerHtml = data[i]['Rules'][j]['Labels'][k]['InnerHtml'];
-            //                    labels.push(label);
-            //                }
-            //                rule.labels = labels;
-            //                rules.push(rule);
-            //            }
-            //            task.rules = rules;
-            //            tasks.push(task);
-            //        }
-            //    },
-            //    error: function (data) {
-            //        alert('error');
-            //    }
-            //});
-            //alert(tasks[0].name)
-            //return tasks;
-        }
-    );
-    $();
+    $(function () {
+        console.log(document.getElementById("checkRecord-table").innerHTML);
+        $.ajax({
+            type: 'GET',
+            dataType: 'json',
+            async: false,
+            url: 'GetTasks',
+            success: function (data) {
+                if (data.length <= 0)
+                    return;
+                var tableHeader = "<tr><th>数据序号</th><th>数据名称</th><th>数据内容</th>";
+                console.log("data[0] rules" + data[0]['Rules']);
+                for (var i = 0; i < data[0]['Rules'].length; i++) {
+                    tableHeader = tableHeader + "<th>" + data[0]['Rules'][i]['Name'] + "</th>";
+
+                }
+                tableHeader = tableHeader + "</tr>";
+                console.log("tableHeader" + tableHeader);
+
+                var tableBody = "";
+                var rowsHtml = "";
+                for (var i = 0; i < data.length; i++) {
+                    var taskNum = i + 1;
+                    var taskName = data[i]['Name'];
+                    var taskContent = data[i]['Content'];
+                    var rowForm = "<tr><td>" + taskNum + "</td><td>" + taskName + "</td><td>" + taskContent + "</td>#rulesHtml#</tr>";
+
+                    var ruleForm = "";
+                    var rulesHtml = "";
+                    for (var j = 0; j < data[i]['Rules'].length; j++) {
+                        var rule = data[i]['Rules'][j];
+                        if (rule['Type'] == "select") {
+                            ruleForm = "<td><div><select>#labelsHtml#</select></div></td>";
+                        } else {
+                            ruleForm = "<td><div>#labelsHtml#</div></td>";
+                        }
+                        //console.log(rule);
+
+                        var labelForm = "";
+                        if (rule['Type'] == "text") {
+                            labelForm = "<p><label>#labelValue#:&nbsp;</label><input class='floatRight' type='text' /></p>";
+                        } else if (rule['Type'] == "radio") {
+                            labelForm = "<p><form><label><input type='radio' />#labelValue#</label></form></p>";
+                        } else if (rule['Type'] == "checkbox") {
+                            labelForm = "<p><label><input type='checkbox' />#labelValue#</label>&nbsp;</p>";
+                        } else if (rule['Type'] == "select") {
+                            labelForm = "<option>#labelValue#</option>";
+                        }
+                        var labelsHtml = "";
+                        for (var k = 0; k < rule['Labels'].length; k++) {
+                            var label = rule['Labels'][k];
+                            var labelValue = label['Label'];
+                            labelsHtml = labelsHtml + labelForm.replace("#labelValue#", labelValue);
+                            console.log("labelForm:" + labelForm + "; labelsHtml:" + labelsHtml);
+                        }
+                        rulesHtml = rulesHtml + ruleForm.replace("#labelsHtml#", labelsHtml);
+                        console.log("ruleForm:" + ruleForm + "; rulesHtml:" + rulesHtml);
+                    }
+                    rowsHtml = rowsHtml + rowForm.replace("#rulesHtml#", rulesHtml);
+                    console.log("rowsHtml:" + rowsHtml);
+                }
+                tableBody = rowsHtml;
+                console.log("tableBody" + tableBody);
+                document.getElementById("checkRecord-table").innerHTML = tableHeader + tableBody;
+            },
+            error: function (data) {
+                alert('error');
+            }
+        });
+    });
 </script>

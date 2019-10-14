@@ -16,14 +16,14 @@ namespace LabelMVCProject.Models
     public class Rule
     {
         public string Type { get; set; }
-        public string RuleName { get; set; }
+        public string Name { get; set; }
         public string Patten { get; set; }
-        public List<Label> Labels { get; set; }
+        public List<LabelInfo> Labels { get; set; }
     }
 
-    public class Label
+    public class LabelInfo
     {
-        public string InnerHtml { get; set; }
+        public string Label { get; set; }
         public string ClassID { get; set; }
     }
 }
