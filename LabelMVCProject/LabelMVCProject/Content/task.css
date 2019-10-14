@@ -7,27 +7,27 @@
     width: 100%;
 }
 
-    /*#checkRecord-table div {
-        display: inline-block;
-    }*/
+    #checkRecord-table td {
+        text-align: left;
+    }
 
     #checkRecord-table p {
-        text-align: left;
+        /*text-align: left;
         width: 100%;
-        display: inline-block;
+        display: inline-block;*/
     }
 
         #checkRecord-table p span {
         }
 
-        #checkRecord-table p input {
-            float: right;
-            min-width: 80%;
-        }
+.floatRight {
+    float: right;
+    /*min-width: 80%;*/
+}
 
-    #checkRecord-table td > div {
-        display: flex;
-    }
+#checkRecord-table td > div {
+    display: inline-block;
+}
 
 #checkRecord-title {
     display: block;

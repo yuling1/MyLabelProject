@@ -7,50 +7,6 @@
 }
 
 
-@*<script type="text/javascript">
-        $(function () {
-            var tasks = new Array();
-            $.ajax({
-                type: 'GET',
-                dataType: 'json',
-                async: false,
-                url: 'GetTasks',
-                success: function (data) {
-                    for (var i = 0; i < data.length; i++) {
-                        var task = {};
-                        var rules = new Array();
-                        var labels = new Array();
-                        //alert('Task Name:' + data[i]['Name']);
-                        task.name = data[i]['Name'];
-                        //alert('Task Content:' + data[i]['Content']);
-                        task.content = data[i]['Content'];
-                        for (var j = 0; j < data[i]['Rules'].length; j++) {
-                            var rule = {};
-                            //alert('Task1 -> Rule1 Name:' + data[i]['Rules'][j]['RuleName']);
-                            rule.name = data[i]['Rules'][j]['RuleName'];
-                            for (var k = 0; k < data[i]['Rules'][j]['Labels'].length; k++) {
-                                var label = {};
-                                //alert('Task1 -> Rule1 -> Label1 Type:' + data[i]['Rules'][j]['Labels'][k]['Type']);
-                                label.type = data[i]['Rules'][j]['Labels'][k]['Type'];
-                                //alert('Task1 -> Rule1 -> Label1 InnerHtml:' + data[i]['Rules'][j]['Labels'][k]['InnerHtml']);
-                                label.innerHtml = data[i]['Rules'][j]['Labels'][k]['InnerHtml'];
-                                labels.push(label);
-                            }
-                            rule.labels = labels;
-                            rules.push(rule);
-                        }
-                        task.rules = rules;
-                        tasks.push(task);
-                    }
-                },
-                error: function (data) {
-                    alert('error');
-                }
-            });
-            alert(tasks[0].name)
-            return tasks;
-        });
-    </script>*@
 
 <div id="leftSideBar">
     <div id="leftSideMenu">
@@ -85,7 +41,6 @@
             <table id="checkRecord-table">
                 <tr>
                     <th>数据序号</th>
-                    <th>数据编号</th>
                     <th>数据名称</th>
                     <th>数据内容</th>
                     @foreach (var rule in Model.First().Rules)
@@ -95,26 +50,37 @@
                 </tr>
                 <tr>
                     <td>1</td>
-                    <td>001</td>
                     <td>小冰诗歌</td>
                     <td>古佛洞的尽头是低矮的棚屋</td>
                     <td>
-                        <input type="checkbox" /><span>True</span>
-                        <input type="checkbox" /><span>False</span>
+                        <div>
+                            <p><span>Edit:&nbsp;</span><input class="floatRight" type="text" /></p>
+                            <p><span>Delete:&nbsp;</span><input class="floatRight" type="text" /></p>
+                        </div>
                     </td>
                     <td>
-                        <p>
-                            <span>Edit: </span>
-                            <input type="text" />
-                        </p>
-                        <p>
-                            <span>Delete: </span>
-                            <input type="text" />
-                        </p>
+                        <div>
+                            <p><input type="radio" /><label>True</label></p>
+                            <p><input type="radio" /><label>False</label></p>
+                        </div>
                     </td>
                     <td>
-                        <input type="checkbox" /><span>True</span>
-                        <input type="checkbox" /><span>False</span>
+                        <div>
+                            <p><input type="checkbox" /><label>暴力</label>&nbsp;</p>
+                            <p><input type="checkbox" /><label>色情</label>&nbsp;</p>
+                            <p><input type="checkbox" /><label>犯罪</label>&nbsp;</p>
+                            <p><input type="checkbox" /><label>赌博</label>&nbsp;</p>
+                        </div>
+                    </td>
+                    <td>
+                        <div>
+                            <select>
+                                <option>暴力</option>
+                                <option>色情</option>
+                                <option>犯罪</option>
+                                <option>赌博</option>
+                            </select>
+                        </div>
                     </td>
                 </tr>
                 @{
@@ -123,48 +89,45 @@
                     {
                         <tr>
                             <td>@i</td>
-                            <td>@item.ID</td>
                             <td>@item.Name</td>
                             <td>@item.Content</td>
                             @foreach (var rule in item.Rules)
                             {
                                 <td>
                                     <div>
-                                        @foreach (var label in rule.Labels)
+                                        @if (rule.Type == "select")
                                         {
-                                            <div>
-                                                @if (label.Type == "label")
+                                            <select>
+                                                @foreach (var label in rule.Labels)
                                                 {
-                                                    <label>@label.InnerHtml</label>
+                                                    <option>@label.InnerHtml</option>
                                                 }
-                                                else
-                                                {
-                                                    <input type=@label.Type />
-                                                }
-                                            </div>
+                                            </select>
+                                        }
+                                        else if (rule.Type == "text")
+                                        {
+                                            foreach (var label in rule.Labels)
+                                            {
+                                                <p><span>@label.InnerHtml:&nbsp;</span><input class='floatRight' type='text' /></p>
+                                            }
+                                        }
+                                        else if (rule.Type == "checkbox")
+                                        {
+                                            foreach (var label in rule.Labels)
+                                            {
+                                                <p><input type='checkbox' /><label>@label.InnerHtml</label>&nbsp;</p>
+                                            }
+                                        }
+                                        else if (rule.Type == "radio")
+                                        {
+                                            foreach (var label in rule.Labels)
+                                            {
+                                                <p><input type='radio' /><label>@label.InnerHtml</label></p>
+                                            }
                                         }
                                     </div>
                                 </td>
                             }
-
-                            @*<td>
-                                    <input type="checkbox" /><span>True</span>
-                                    <input type="checkbox" /><span>False</span>
-                                </td>
-                                <td>
-                                    <p>
-                                        <span>Edit: </span>
-                                        <input type="text" />
-                                    </p>
-                                    <p>
-                                        <span>Delete: </span>
-                                        <input type="text" />
-                                    </p>
-                                </td>
-                                <td>
-                                    <input type="checkbox" /><span>True</span>
-                                    <input type="checkbox" /><span>False</span>
-                                </td>*@
                         </tr>
                         i++;
                     }
@@ -173,3 +136,54 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    $(document).ready(
+        function () {
+            alert($("#checkRecord-table").innerHtml);
+            //var tasks = new Array();
+            //$.ajax({
+            //    type: 'GET',
+            //    dataType: 'json',
+            //    async: false,
+            //    url: 'GetTasks',
+            //    success: function (data) {
+            //        for (var i = 0; i < data.length; i++) {
+            //            data[i]['Name'];
+
+            //            var task = {};
+            //            var rules = new Array();
+            //            var labels = new Array();
+            //            //alert('Task Name:' + data[i]['Name']);
+            //            task.name = data[i]['Name'];
+            //            //alert('Task Content:' + data[i]['Content']);
+            //            task.content = data[i]['Content'];
+            //            for (var j = 0; j < data[i]['Rules'].length; j++) {
+            //                var rule = {};
+            //                //alert('Task1 -> Rule1 Name:' + data[i]['Rules'][j]['RuleName']);
+            //                rule.name = data[i]['Rules'][j]['RuleName'];
+            //                for (var k = 0; k < data[i]['Rules'][j]['Labels'].length; k++) {
+            //                    var label = {};
+            //                    //alert('Task1 -> Rule1 -> Label1 Type:' + data[i]['Rules'][j]['Labels'][k]['Type']);
+            //                    label.type = data[i]['Rules'][j]['Labels'][k]['Type'];
+            //                    //alert('Task1 -> Rule1 -> Label1 InnerHtml:' + data[i]['Rules'][j]['Labels'][k]['InnerHtml']);
+            //                    label.innerHtml = data[i]['Rules'][j]['Labels'][k]['InnerHtml'];
+            //                    labels.push(label);
+            //                }
+            //                rule.labels = labels;
+            //                rules.push(rule);
+            //            }
+            //            task.rules = rules;
+            //            tasks.push(task);
+            //        }
+            //    },
+            //    error: function (data) {
+            //        alert('error');
+            //    }
+            //});
+            //alert(tasks[0].name)
+            //return tasks;
+        }
+    );
+    $();
+</script>

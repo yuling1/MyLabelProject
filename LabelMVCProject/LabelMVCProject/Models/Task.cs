@@ -8,7 +8,6 @@ namespace LabelMVCProject.Models
     public class Task
     {
         public int Num { get; set; }
-        public int ID { get; set; }
         public string Name { get; set; }
         public string Content { get; set; }
         public List<Rule> Rules { get; set; }
@@ -16,6 +15,7 @@ namespace LabelMVCProject.Models
 
     public class Rule
     {
+        public string Type { get; set; }
         public string RuleName { get; set; }
         public string Patten { get; set; }
         public List<Label> Labels { get; set; }
@@ -23,7 +23,6 @@ namespace LabelMVCProject.Models
 
     public class Label
     {
-        public string Type { get; set; }
         public string InnerHtml { get; set; }
         public string ClassID { get; set; }
     }
