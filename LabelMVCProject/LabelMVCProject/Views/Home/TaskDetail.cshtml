@@ -135,6 +135,13 @@
             </table>
         </div>
     </div>
+    <div class="paging">
+        <a href="###"><span class="fa fa-angle-left" aria-hidden="true"></span></a>
+        <a href="###"><span>1</span></a>
+        <a href="###"><span>2</span></a>
+        <a href="###"><span>3</span></a>
+        <a href="###"><span class="fa fa-angle-right" aria-hidden="true"></span></a>
+    </div>
 </div>
 
 <script type="text/javascript">
@@ -182,7 +189,7 @@
                         if (rule['Type'] == "text") {
                             labelForm = "<p><label>#labelValue#:&nbsp;</label><input class='floatRight' type='text' /></p>";
                         } else if (rule['Type'] == "radio") {
-                            labelForm = "<p><form><label><input type='radio' />#labelValue#</label></form></p>";
+                            labelForm = "<p><label><input type='radio' name='#Name#' />#labelValue#</label></p>";
                         } else if (rule['Type'] == "checkbox") {
                             labelForm = "<p><label><input type='checkbox' />#labelValue#</label>&nbsp;</p>";
                         } else if (rule['Type'] == "select") {
@@ -192,7 +199,7 @@
                         for (var k = 0; k < rule['Labels'].length; k++) {
                             var label = rule['Labels'][k];
                             var labelValue = label['Label'];
-                            labelsHtml = labelsHtml + labelForm.replace("#labelValue#", labelValue);
+                            labelsHtml = labelsHtml + labelForm.replace("#labelValue#", labelValue).replace("#Name#", taskNum);
                             console.log("labelForm:" + labelForm + "; labelsHtml:" + labelsHtml);
                         }
                         rulesHtml = rulesHtml + ruleForm.replace("#labelsHtml#", labelsHtml);

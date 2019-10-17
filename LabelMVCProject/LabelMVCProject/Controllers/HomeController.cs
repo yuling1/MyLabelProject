@@ -32,8 +32,8 @@ namespace LabelMVCProject.Controllers
         {
             var label1 = new LabelInfo() { Label = "True", ClassID = "true" };
             var label2 = new LabelInfo() { Label = "False", ClassID = "false" };
-            var label3 = new LabelInfo() { Label = "Edit: ", ClassID = "edit" };
-            var label4 = new LabelInfo() { Label = "Delete: ", ClassID = "delete" };
+            var label3 = new LabelInfo() { Label = "Edit", ClassID = "edit" };
+            var label4 = new LabelInfo() { Label = "Delete", ClassID = "delete" };
             var label5 = new LabelInfo() { Label = "暴力", ClassID = "classID5" };
             var label6 = new LabelInfo() { Label = "色情", ClassID = "classID6" };
             var label7 = new LabelInfo() { Label = "犯罪", ClassID = "classID7" };
@@ -54,8 +54,8 @@ namespace LabelMVCProject.Controllers
             labels4.Add(label7);
             labels4.Add(label6);
             labels4.Add(label8);
-            var rule1 = new Rule() { Name = "Rule1", Patten = "", Labels = labels1, Type = "text" };
-            var rule2 = new Rule() { Name = "Rule2", Patten = "", Labels = labels2, Type = "radio" };
+            var rule1 = new Rule() { Name = "Rule1", Patten = "", Labels = labels1, Type = "radio" };
+            var rule2 = new Rule() { Name = "Rule2", Patten = "", Labels = labels2, Type = "text" };
             var rule3 = new Rule() { Name = "Rule3", Patten = "", Labels = labels3, Type = "checkbox" };
             var rule4 = new Rule() { Name = "Rule4", Patten = "", Labels = labels4, Type = "select" };
             var rules = new List<Rule>();
