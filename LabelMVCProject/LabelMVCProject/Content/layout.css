@@ -214,11 +214,14 @@ td {
     text-align: center;
 }
 
+    .paging > div,
+    .paging > div > a,
     .paging > a {
         display: inline-block;
     }
 
-        .paging > a > span {
+        .paging > a > span,
+        .paging > div > a > span {
             display: inline-block;
             width: 30px;
             height: 30px;
