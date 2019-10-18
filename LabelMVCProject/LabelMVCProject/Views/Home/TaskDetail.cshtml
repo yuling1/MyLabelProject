@@ -137,7 +137,7 @@
     </div>
     <div class="paging">
         <a href="#" onclick="goFirstPage()"><span class="fa fa-angle-left" aria-hidden="true"></span></a>
-        <div class="paging-pages" id="paging-pages"></div>
+        <div class="paging_pages" id="paging_pages"></div>
         <a href="#" onclick="goLastPage()"><span class="fa fa-angle-right" aria-hidden="true"></span></a>
     </div>
 </div>
@@ -147,6 +147,7 @@
     var rows;
     var totalNum;
     var totalPage;
+    var currentPage;
     $(function getTableHtml() {
         //console.log(document.getElementById("checkRecord-table").innerHTML);
         $.ajax({
@@ -158,13 +159,13 @@
                 if (data.length <= 0)
                     return;
                 var tableHeader = "<tr><th>数据序号</th><th>数据名称</th><th>数据内容</th>";
-                console.log("data[0] rules" + data[0]['Rules']);
+                //console.log("data[0] rules" + data[0]['Rules']);
                 for (var i = 0; i < data[0]['Rules'].length; i++) {
                     tableHeader = tableHeader + "<th>" + data[0]['Rules'][i]['Name'] + "</th>";
 
                 }
                 tableHeader = tableHeader + "</tr>";
-                console.log("tableHeader" + tableHeader);
+                //console.log("tableHeader" + tableHeader);
 
                 var tableBody = "";
                 var rowsHtml = "";
@@ -200,16 +201,16 @@
                             var label = rule['Labels'][k];
                             var labelValue = label['Label'];
                             labelsHtml = labelsHtml + labelForm.replace("#labelValue#", labelValue).replace("#Name#", taskNum);
-                            console.log("labelForm:" + labelForm + "; labelsHtml:" + labelsHtml);
+                            //console.log("labelForm:" + labelForm + "; labelsHtml:" + labelsHtml);
                         }
                         rulesHtml = rulesHtml + ruleForm.replace("#labelsHtml#", labelsHtml);
-                        console.log("ruleForm:" + ruleForm + "; rulesHtml:" + rulesHtml);
+                        //console.log("ruleForm:" + ruleForm + "; rulesHtml:" + rulesHtml);
                     }
                     rowsHtml = rowsHtml + rowForm.replace("#rulesHtml#", rulesHtml);
-                    console.log("rowsHtml:" + rowsHtml);
+                    //console.log("rowsHtml:" + rowsHtml);
                 }
                 tableBody = rowsHtml;
-                console.log("tableBody" + tableBody);
+                //console.log("tableBody" + tableBody);
                 document.getElementById("checkRecord-table").innerHTML = tableHeader + tableBody;
             },
             error: function (data) {
@@ -219,17 +220,18 @@
         rows = document.getElementById("checkRecord-table").rows;
         totalNum = rows.length - 1;
         totalPage = Math.ceil(totalNum / pageSize);
+        getPagingHtml();
         goPage(1, pageSize);
     });
-
-    $(function getPagingHtml() {
+    
+    function getPagingHtml() {
         var pagingHtml = "";
         for (var i = 1; i <= totalPage; i++) {
             var html = "<a href='#' onclick='goPage(" + i + ", " + pageSize + ")'><span>" + i + "</span></a>";
             pagingHtml = pagingHtml + html;
         }
-        document.getElementById("paging-pages").innerHTML = pagingHtml;
-    });
+        document.getElementById("paging_pages").innerHTML = pagingHtml;
+    }
 
     function goPage(page, size) {
         var startNum = (page - 1) * size + 1;
@@ -241,6 +243,9 @@
                 rows[i].style.display = "none";
             }
         }
+        var links = $("#paging_pages a span");
+        links.removeClass("pagingActive");
+        $(links[page-1]).addClass("pagingActive");
     }
 
     function goFirstPage() {

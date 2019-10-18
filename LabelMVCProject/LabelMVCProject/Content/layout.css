@@ -230,3 +230,8 @@ td {
             border: 1px solid #dcdcdc;
             border-radius: 5px;
         }
+
+.pagingActive {
+    background-color: #1890ff;
+    color: #ffffff;
+}
